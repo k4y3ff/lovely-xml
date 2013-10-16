@@ -1,8 +1,8 @@
 from lxml import etree
 import sys
 
-def parse_xml():
-	apartments = etree.parse("test.xml").getroot()
+def parse_xml(filepath):
+	apartments = etree.parse(filepath).getroot()
 
 	highest_monthly_rent = -1
 	lowest_monthly_rent = -1
@@ -64,4 +64,4 @@ def parse_xml():
 	print "Average Rent 1 Bedroom in SF or LA: $" + \
 			str(total_1_bdrm_sfca_laca_rent / total_1_bdrm_sfca_laca_count)
 
-parse_xml()
+parse_xml(sys.argv[1])

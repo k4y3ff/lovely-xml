@@ -1,5 +1,4 @@
 ## To Do
-- Allow command-line arguments
 - Add bonus metric
 - Speed up process
 
