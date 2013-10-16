@@ -1,7 +1,3 @@
-## To Do
-- Add bonus metric
-- Speed up process
-
 ## Challenge
 Your program will print the following metrics to standard out
 - Highest monthly rent

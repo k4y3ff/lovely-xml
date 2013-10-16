@@ -31,16 +31,16 @@ def parse_xml(filepath):
 			lowest_monthly_rent = float(attr["Rent"])
 		if attr["State"] == "CA" and attr["Beds"] == "1":
 			total_1_bdrm_ca_sqft += float(attr["SquareFoot"])
-			total_1_bdrm_ca_count += 1.0
+			total_1_bdrm_ca_count += 1
 		if float(attr["Rent"]) / float(attr["SquareFoot"]) > \
 				highest_price_per_sqft:
 			highest_price_per_sqft = float(attr["Rent"]) / \
 					float(attr["SquareFoot"])
 		if attr["City"] == "San Francisco" and attr["State"] == "CA":
-			num_apart_sfca += 1.0
+			num_apart_sfca += 1
 		if attr["City"] == "New York" and attr["State"] == "NY" and \
 				attr["Bathrooms"] == "2":
-			num_2_bthrm_nyny += 1.0
+			num_2_bthrm_nyny += 1
 		if (attr["City"] == "San Francisco" or \
 				attr["City"] == "Los Angeles") and attr["State"] == "CA" and \
 				attr["Beds"] == "1":
@@ -54,14 +54,16 @@ def parse_xml(filepath):
 	if highest_price_per_sqft == -1:
 		highest_price_per_sqft = "N/A"
 
-	print "Highest Rent: $" + str(highest_monthly_rent)
-	print "Lowest Rent: $" + str(lowest_monthly_rent)
+	print "Highest Rent: $" + str(round(highest_monthly_rent, 2))
+	print "Lowest Rent: $" + str(round(lowest_monthly_rent, 2))
 	print "Average Square Footage 1 Bedroom in CA: " + \
-			str(total_1_bdrm_ca_sqft / total_1_bdrm_ca_count)
-	print "Highest Price Per Square Foot: $" + str(highest_price_per_sqft)
+			str(round(total_1_bdrm_ca_sqft / total_1_bdrm_ca_count, 2))
+	print "Highest Price Per Square Foot: $" + \
+			str(round(highest_price_per_sqft, 2))
 	print "Number of Apartments in SF: " + str(num_apart_sfca)
 	print "Number of Apartments 2 Bathrooms: " + str(num_2_bthrm_nyny)
 	print "Average Rent 1 Bedroom in SF or LA: $" + \
-			str(total_1_bdrm_sfca_laca_rent / total_1_bdrm_sfca_laca_count)
+			str(round(total_1_bdrm_sfca_laca_rent / 
+			total_1_bdrm_sfca_laca_count, 2))
 
 parse_xml(sys.argv[1])
